@@ -13,9 +13,9 @@ static const char *fonts[]          = { "monospace:pixelsize=13:antialias=true:a
 static const char dmenufont[]       = "monospace:pixelsize=13:antialias=true:autohint=true";
 static const char col_gray1[]       = "#282828"; // "#222222"
 static const char col_gray2[]       = "#49483e"; // "#444444"
-static const char col_gray3[]       = "#f8f8f2"; // "#bbbbbb"
+static const char col_gray3[]       = "#a1efe4"; // "#bbbbbb"
 static const char col_gray4[]       = "#383830"; // "#eeeeee"
-static const char col_cyan[]        = "#f92672"; // "#005577"
+static const char col_cyan[]        = "#a6e22e"; // "#005577"
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
