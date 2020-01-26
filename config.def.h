@@ -11,11 +11,11 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Hack Nerd Font Mono:pixelsize=13:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Hack Nerd Font Mono:pixelsize=13:antialias=true:autohint=true";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_gray1[]       = "#282828"; // "#222222"
+static const char col_gray2[]       = "#49483e"; // "#444444"
+static const char col_gray3[]       = "#f8f8f2"; // "#bbbbbb"
+static const char col_gray4[]       = "#383830"; // "#eeeeee"
+static const char col_cyan[]        = "#f92672"; // "#005577"
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -30,11 +30,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       "GIMP Startup",       0,            1,           -1 },
-	{ "firefox",  NULL,       NULL,       1<<1,         0,           -1 },
-	{ "discord",  NULL,       NULL,       1<<8,         0,           -1 },
-	{ "TelegramDesktop",  NULL,       NULL,       1<<7,         0,           -1 },
+	/* class                instance    title                   tags mask     isfloating   monitor */
+	{ "Gimp",               NULL,       "GIMP Startup",         0,            1,           -1 },
+	/* { "firefox",            NULL,       "Picture-in-Picture",   0,            1,           -1 }, */ //does not seem to work
+	{ "firefox",            NULL,       NULL,                   1<<1,         0,           -1 },
+	{ "discord",            NULL,       NULL,                   1<<8,         0,           -1 },
+	{ "TelegramDesktop",    NULL,       NULL,                   1<<7,         0,           -1 },
 };
 
 /* layout(s) */
