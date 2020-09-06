@@ -11,7 +11,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Hack Nerd Font:pixelsize=14:antialias=true:autohint=true", "Joy Pixels:pixelsize=14:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Hack Nerd Font:pixelsize=14:antialias=true:autohint=true";
-static const char col_gray1[]       = "#282828";
+static const char col_gray1[]       = "#272822";
 static const char col_gray2[]       = "#49483e";
 static const char col_gray3[]       = "#383830";
 static const char col_cyan[]        = "#a1efe4";
