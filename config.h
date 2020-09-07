@@ -31,14 +31,16 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class                instance    title                   tags mask     isfloating   monitor */
-	{ "Gimp",               NULL,       "GIMP Startup",         0,            1,           -1 },
-	/* { "firefox",            NULL,       "Picture-in-Picture",   0,            1,           -1 }, */ //does not seem to work
-	{ "firefox",            NULL,       NULL,                   1<<1,         0,           -1 },
-	{ "discord",            NULL,       NULL,                   1<<8,         0,           -1 },
-	{ "TelegramDesktop",    NULL,       NULL,                   1<<7,         0,           -1 },
-	{ "QjackCtl",           NULL,       NULL,                   0,            1,           -1 },
-	{ "st-256color",        NULL,       "youtube-dl",           1<<2,            0,           -1 },
+	/* class                instance    title                   tags mask     isfloating   monitor  scratch key*/
+	{ "Gimp",               NULL,       "GIMP Startup",         0,            1,           -1,      0 },
+	/* { "firefox",            NULL,       "Picture-in-Picture",   0,            1,           -1,       0 }, */ //does not seem to work
+	{ "firefox",            NULL,       NULL,                   1<<1,         0,           -1,      0 },
+	{ "discord",            NULL,       NULL,                   1<<8,         0,           -1,      0 },
+	{ "TelegramDesktop",    NULL,       NULL,                   1<<7,         0,           -1,      0 },
+	{ "QjackCtl",           NULL,       NULL,                   0,            1,           -1,      0 },
+	{ "st-256color",        NULL,       "youtube-dl",           1<<2,         0,           -1,      0 },
+	{ NULL,					NULL,		"scratchpad",			0,            1,           -1,      's' },
+	{ NULL,					NULL,		"qalcpad",			    0,            1,           -1,      'q' },
 };
 
 /* layout(s) */
@@ -69,10 +71,16 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_cyan, "-sb", col_green, "-sf", col_gray3, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+/*First arg only serves to match against key in rules*/
+static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", "-g", "239x30", NULL};
+static const char *qalcpadcmd[] = {"q", "st", "-t", "qalcpad", "-g", "239x30", "-e", "qalc", NULL};
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ControlMask,           XK_Return, togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY|ShiftMask,             XK_numbersign, togglescratch,  {.v = qalcpadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
