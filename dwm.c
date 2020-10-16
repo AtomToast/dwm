@@ -48,7 +48,7 @@
 #define BUTTONMASK              (ButtonPressMask|ButtonReleaseMask)
 #define CLEANMASK(mask)         (mask & ~(numlockmask|LockMask) & (ShiftMask|ControlMask|Mod1Mask|Mod2Mask|Mod3Mask|Mod4Mask|Mod5Mask))
 #define INTERSECT(x,y,w,h,m)    (MAX(0, MIN((x)+(w),(m)->wx+(m)->ww) - MAX((x),(m)->wx)) \
-                               * MAX(0, MIN((y)+(h),(m)->wy+(m)->wh) - MAX((y),(m)->wy)))
+			       * MAX(0, MIN((y)+(h),(m)->wy+(m)->wh) - MAX((y),(m)->wy)))
 #define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]))
 #define LENGTH(X)               (sizeof X / sizeof X[0])
 #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
@@ -111,7 +111,7 @@ struct Client {
 	int bw, oldbw;
 	unsigned int tags;
 	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
-    char scratchkey;
+	char scratchkey;
 	Client *next;
 	Client *snext;
 	Monitor *mon;
@@ -160,7 +160,7 @@ typedef struct {
 	unsigned int tags;
 	int isfloating;
 	int monitor;
-    const char scratchkey;
+	const char scratchkey;
 } Rule;
 
 typedef struct Systray   Systray;
@@ -337,7 +337,7 @@ applyrules(Client *c)
 	/* rule matching */
 	c->isfloating = 0;
 	c->tags = 0;
-    c->scratchkey = 0;
+	c->scratchkey = 0;
 	XGetClassHint(dpy, c->win, &ch);
 	class    = ch.res_class ? ch.res_class : broken;
 	instance = ch.res_name  ? ch.res_name  : broken;
@@ -350,7 +350,7 @@ applyrules(Client *c)
 		{
 			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
-            c->scratchkey = r->scratchkey;
+			c->scratchkey = r->scratchkey;
 			for (m = mons; m && m->num != r->monitor; m = m->next);
 			if (m)
 				c->mon = m;
@@ -742,17 +742,17 @@ createmon(void)
 	m->lt[0] = &layouts[0];
 	m->lt[1] = &layouts[1 % LENGTH(layouts)];
 	strncpy(m->ltsymbol, layouts[0].symbol, sizeof m->ltsymbol);
-    if (!(m->pertag = (Pertag *)calloc(1, sizeof(Pertag))))
+	if (!(m->pertag = (Pertag *)calloc(1, sizeof(Pertag))))
 	    die("fatal: could not malloc() %u bytes\n", sizeof(Pertag));
 	m->pertag->curtag = m->pertag->prevtag = 1;
 	for (i=0; i <= LENGTH(tags); i++) {
 		/* init nmaster */
 		m->pertag->nmasters[i] = m->nmaster;
 
-        /* init mfacts */
+		/* init mfacts */
 		m->pertag->mfacts[i] = m->mfact;
 
-        /* init layouts */
+		/* init layouts */
 		m->pertag->ltidxs[i][0] = m->lt[0];
 		m->pertag->ltidxs[i][1] = m->lt[1];
 		m->pertag->sellts[i] = m->sellt;
@@ -902,7 +902,7 @@ expose(XEvent *e)
 	XExposeEvent *ev = &e->xexpose;
 
 	if (ev->count == 0 && (m = wintomon(ev->window))) {
- 		drawbar(m);
+		drawbar(m);
 		if (m == selmon)
 			updatesystray();
 	}
@@ -997,8 +997,8 @@ getatomprop(Client *c, Atom prop)
 		req = xatom[XembedInfo];
 
 	if (XGetWindowProperty(dpy, c->win, prop, 0L, sizeof atom, False, req,
- 		&da, &di, &dl, &dl, &p) == Success && p) {
- 		atom = *(Atom *)p;
+		&da, &di, &dl, &dl, &p) == Success && p) {
+		atom = *(Atom *)p;
 		if (da == xatom[XembedInfo] && dl == 2)
 			atom = ((Atom *)p)[1];
 		XFree(p);
@@ -1937,7 +1937,7 @@ tile(Monitor *m)
 void
 togglebar(const Arg *arg)
 {
-    selmon->showbar = !selmon->showbar;
+	selmon->showbar = !selmon->showbar;
 	updatebarpos(selmon);
 	resizebarwin(selmon);
 	if (showsystray) {
@@ -2024,7 +2024,7 @@ toggleview(const Arg *arg)
 			selmon->pertag->curtag = i + 1;
 		}
 
- 		selmon->tagset[selmon->seltags] = newtagset;
+		selmon->tagset[selmon->seltags] = newtagset;
 
 		/* apply settings for this view */
 		selmon->nmaster = selmon->pertag->nmasters[selmon->pertag->curtag];
