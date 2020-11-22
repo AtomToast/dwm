@@ -1460,6 +1460,7 @@ resizeclient(Client *c, int x, int y, int w, int h)
 {
 	XWindowChanges wc;
 
+	// n = number of monitors
 	unsigned int n;
 	Monitor *cm;
 	for (n = 0, cm = mons; cm; cm = cm->next, n++);
@@ -1473,7 +1474,7 @@ resizeclient(Client *c, int x, int y, int w, int h)
 	    || &monocle == c->mon->lt[c->mon->sellt]->arrange)
 	    && !c->isfullscreen && !c->isfloating
 	    && NULL != c->mon->lt[c->mon->sellt]->arrange
-	    && n == 0) {
+	    && n == 1) {
 		c->w = wc.width += c->bw * 2;
 		c->h = wc.height += c->bw * 2;
 		wc.border_width = 0;
