@@ -82,7 +82,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask,           XK_Return, togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY|ShiftMask,             XK_numbersign, togglescratch,  {.v = qalcpadcmd } },
+	{ MODKEY,                       XK_apostrophe, togglescratch,  {.v = qalcpadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
