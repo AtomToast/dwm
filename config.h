@@ -36,13 +36,16 @@ static const Rule rules[] = {
 	/* class                instance    title                   tags mask     isfloating   monitor  scratch key*/
 	{ "Gimp",               NULL,       "GIMP Startup",         0,            1,           -1,      0 },
 	/* { "firefox",            NULL,       "Picture-in-Picture",   0,            1,           -1,       0 }, */ //does not seem to work
-	{ "firefox",            NULL,       NULL,                   1<<1,         0,           -1,      0 },
-	{ "discord",            NULL,       NULL,                   1<<8,         0,           -1,      0 },
-	{ "TelegramDesktop",    NULL,       NULL,                   1<<7,         0,           -1,      0 },
+	{ "firefox",            NULL,       NULL,                   1<<1,         0,            0,      0 },
+	{ "discord",            NULL,       NULL,                   1<<8,         0,            1,      0 },
+	{ "TelegramDesktop",    NULL,       NULL,                   1<<7,         0,            1,      0 },
+	{ "Signal",             NULL,       NULL,                   1<<5,         0,            1,      0 },
+	{ "Slack",              NULL,       NULL,                   1<<4,         0,            1,      0 },
+	{ "Element",            NULL,       NULL,                   1<<3,         0,            1,      0 },
 	{ "QjackCtl",           NULL,       NULL,                   0,            1,           -1,      0 },
 	{ "st-256color",        NULL,       "youtube-dl",           1<<2,         0,           -1,      0 },
-	{ NULL,					NULL,		"scratchpad",			0,            1,           -1,      's' },
-	{ NULL,					NULL,		"qalcpad",			    0,            1,           -1,      'q' },
+	{ NULL,                 NULL,       "scratchpad",           0,            1,            1,      's' },
+	{ NULL,                 NULL,       "qalcpad",              0,            1,            1,      'q' },
 };
 
 /* layout(s) */
