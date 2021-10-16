@@ -1679,7 +1679,7 @@ sendevent(Window w, Atom proto, int mask, long d0, long d1, long d2, long d3, lo
 		ev.xclient.data.l[2] = d2;
 		ev.xclient.data.l[3] = d3;
 		ev.xclient.data.l[4] = d4;
-+		XSendEvent(dpy, w, False, mask, &ev);
+		XSendEvent(dpy, w, False, mask, &ev);
 	}
 	return exists;
 }
