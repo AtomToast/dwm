@@ -43,7 +43,7 @@ static const Rule rules[] = {
 	{ "Slack",              NULL,       NULL,                   1<<4,         0,            1,      0 },
 	{ "Element",            NULL,       NULL,                   1<<3,         0,            1,      0 },
 	{ "QjackCtl",           NULL,       NULL,                   0,            1,           -1,      0 },
-	{ "st-256color",        NULL,       "youtube-dl",           1<<2,         0,           -1,      0 },
+	{ "st-256color",        NULL,       "yt-dlp",               1<<2,         0,           -1,      0 },
 	{ NULL,                 NULL,       "scratchpad",           0,            1,            1,      's' },
 	{ NULL,                 NULL,       "qalcpad",              0,            1,            1,      'q' },
 };
